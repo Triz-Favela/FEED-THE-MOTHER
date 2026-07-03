@@ -1,8 +1,5 @@
 extends CharacterBody2D
-
-@onready var Anim_tree:AnimationTree = $Player_visuals/AnimationTree
-@onready var Anim_state_machine = Anim_tree.get("parameters/playback")
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+class_name Player
 
 var health:float = 100
 
@@ -25,9 +22,8 @@ func _process(_delta):
 		Engine.time_scale = 1
 	if mouse_in_window:
 		$Camera2D.position = get_local_mouse_position()/7
-	
+
 func _physics_process(_delta):
-	
 	var head_angle = get_angle_to(get_global_mouse_position())
 	if head_angle > -1.5 and head_angle < 1.5:
 		flipped = -1

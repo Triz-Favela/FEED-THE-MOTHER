@@ -48,10 +48,11 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("SHOW_HIDE_INV"):
-		if Inventory_menu.visible:
-			Inventory_menu.visible = false
-		else:
-			Inventory_menu.visible = true
+		Inventory_menu.visible = !Inventory_menu.visible
+		#if Inventory_menu.visible:
+			#Inventory_menu.visible = false
+		#else:
+			#Inventory_menu.visible = true
 	
 	if Inventory_menu.visible:
 		return
@@ -76,6 +77,8 @@ func update_current_item():
 	#if the index is not -1 (free hand index)
 	if current_item_reference != null and Inventory_items_list.get_child_count() > 0:
 		var instance = current_item_reference.item_value.instantiate()
+		instance.picked = true
+		instance.pickable = false
 		call_deferred("add_child", instance)
 		current_item = instance
 		await child_order_changed

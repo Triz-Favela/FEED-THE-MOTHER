@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://do0msa5ey7ikh"]
+[gd_scene load_steps=6 format=3 uid="uid://do0msa5ey7ikh"]
 
 [ext_resource type="Script" path="res://Scripts/Fishes/FishClass.gd" id="1_hmxal"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="2_f2bv0"]
+[ext_resource type="Script" path="res://Scripts/Fishes/FishStates/Idle.gd" id="3_g0404"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxvrs"]
 radius = 6.0
 height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydgpy"]
+radius = 100.0
 
 [node name="Fish" type="CharacterBody2D"]
 collision_layer = 4
@@ -18,3 +23,16 @@ weight = 1.0
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qxvrs")
 debug_color = Color(0.976471, 0.0117647, 0.403922, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ydgpy")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_f2bv0")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_g0404")

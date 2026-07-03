@@ -1,7 +1,7 @@
-extends State
+extends PlayerState
 
 @export_group("States")
-@export var air:State
+@export var air: PlayerState
 
 func enter():
 	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING

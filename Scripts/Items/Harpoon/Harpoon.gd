@@ -22,3 +22,4 @@ func action():
 	spear.item_qntt -= 1
 	if spear.item_qntt <=0:
 		spear.queue_free()
+	print("atirei")

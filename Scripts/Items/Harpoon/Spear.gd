@@ -2,32 +2,51 @@ extends Item
 
 var stuck: bool = false
 
-func _physics_process(delta):
-	if !picked:
-		if pickable == false:
-			timer -= delta
-		if timer <= 0:
-			pickable = true
+func unpicked_item_physics(delta: float) -> void:
+	# If the spear is picked or stuck, then it returns
+	if picked:
+		return
+	
+	# The item sets a condition to be pickable
+	# a timer of 0.2 second is the default, to prevent it to be pickable right 
+	# after the player drops it
+	pickable = pickable_condition(delta)
+	
+	if stuck:
+		return
+	
+	# If the velocity is grater than the treshhold, 
+	# the rotation is set to the velocity angle
+	# (the treshold exists to prevent it from rotating like crazy, 
+	# the velocity never gets to zero apparently)
+	
 		
-		if stuck:
-			return
-		
-		if in_water:
-			velocity = velocity * 0.99
-			velocity.y += gravity/5 * delta
-		else:
-			velocity.y += gravity * delta
-		
-		rotation = velocity.angle()
-		move_and_slide()
+	rotation = lerp_angle(rotation, velocity.angle(), 0.9)
+	
+	
+	# If its on water, the velocity gradually decreases
+	if in_water:
+		water_physics(delta)
+	# Else, it justs runs the normal gravity
+	else:
+		velocity.y += gravity * delta
+	
+	move_and_slide()
+
+func pickable_condition(_delta: float) -> bool:
+	if stuck:
+		return true
+	print(velocity.length())
+	if velocity.length() < 50:
+		return true
+	return false
 
 
-
-
-func _on_damage_body_entered(body):
-	if stuck or get_parent() == player.get_node("CurrentItem") or ("health" in body and body.health <= 0):
+func _on_damage_body_entered(body: Node2D) -> void:
+	if stuck or ("health" in body and body.health <= 0) or (picked and !("health" in body)):
 		return
 	velocity = Vector2.ZERO
+	print(velocity)
 	stuck = true
 	
 	call_deferred("reparent", body)
@@ -39,7 +58,7 @@ func _on_damage_body_entered(body):
 		if body.health <= 0:
 			picked = true
 			pickable = false
-			for node in body.get_children():
+			for node: Node in body.get_children():
 				if node is Item:
 					node.picked = true
 					node.pickable = false

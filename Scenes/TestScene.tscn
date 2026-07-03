@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://ttxlbgrtqq3"]
+[gd_scene load_steps=6 format=4 uid="uid://ttxlbgrtqq3"]
 
 [ext_resource type="PackedScene" uid="uid://bjfdnnewjvvki" path="res://Scenes/Enviroment/water.tscn" id="1_13rao"]
 [ext_resource type="PackedScene" uid="uid://brwnly3mkqong" path="res://Scenes/PlayerStuff/player.tscn" id="1_jhbyq"]
-[ext_resource type="PackedScene" uid="uid://olbeghikqf2s" path="res://Scenes/Enviroment/fishSpawner.tscn" id="3_ujti4"]
 [ext_resource type="TileSet" uid="uid://bwskm66royo1" path="res://Assets/Enviroment/TerrainMaterials/Grass.tres" id="6_jsdfw"]
 [ext_resource type="PackedScene" uid="uid://jaghkr42fva2" path="res://Scenes/mother.tscn" id="6_nb3w0"]
 [ext_resource type="PackedScene" uid="uid://cuy2lwjgflp4f" path="res://Scenes/Enviroment/AirGeyser/airGeyser.tscn" id="7_gbsoy"]
@@ -13,11 +12,8 @@
 position = Vector2(680, 427)
 scale = Vector2(69.9256, 28.76)
 
-[node name="FishSpawner" parent="." instance=ExtResource("3_ujti4")]
-position = Vector2(824, 354)
-
 [node name="MOTHER" parent="." instance=ExtResource("6_nb3w0")]
-position = Vector2(-366, 107)
+position = Vector2(-361, 117)
 collision_layer = 65
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

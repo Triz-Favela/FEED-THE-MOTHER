@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://brwnly3mkqong"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerStuff/Player.gd" id="1_tc1q1"]
-[ext_resource type="Script" path="res://Scripts/PlayerStuff/StateMachine/StateMachine.gd" id="2_6kajl"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="2_6kajl"]
 [ext_resource type="Script" path="res://Scripts/PlayerStuff/CurrentItem.gd" id="2_733f7"]
 [ext_resource type="PackedScene" uid="uid://csmo44jxhcruy" path="res://Scenes/PlayerStuff/player_visuals.tscn" id="2_vvtxs"]
 [ext_resource type="Script" path="res://Scripts/PlayerStuff/StateMachine/States/ground.gd" id="3_a0god"]
@@ -52,16 +52,16 @@ position = Vector2(0, 17)
 scale = Vector2(0.15, 0.15)
 
 [node name="UpperBody" parent="Player_visuals/Skeleton2D/root" index="0"]
-scale = Vector2(0.999994, 0.999994)
+scale = Vector2(0.999993, 0.999993)
 
 [node name="Head" parent="Player_visuals/Skeleton2D/root/UpperBody" index="0"]
 scale = Vector2(0.999999, 0.999999)
 
 [node name="F_Arm" parent="Player_visuals/Skeleton2D/root/UpperBody" index="1"]
-scale = Vector2(0.999995, 0.999995)
+scale = Vector2(0.999994, 0.999994)
 
 [node name="B_Arm" parent="Player_visuals/Skeleton2D/root/UpperBody" index="2"]
-scale = Vector2(0.999996, 0.999996)
+scale = Vector2(0.999995, 0.999995)
 
 [node name="H_Arm" parent="Player_visuals/Skeleton2D/root/UpperBody" index="3"]
 scale = Vector2(1, 1)
@@ -73,10 +73,10 @@ scale = Vector2(0.999994, 0.999994)
 scale = Vector2(0.999996, 0.999996)
 
 [node name="B_Leg" parent="Player_visuals/Skeleton2D/root/LowerBody" index="1"]
-scale = Vector2(0.999994, 0.999994)
+scale = Vector2(0.999993, 0.999993)
 
 [node name="B_Foot" parent="Player_visuals/Skeleton2D/root/LowerBody/B_Leg/B_Calf" index="0"]
-scale = Vector2(0.999994, 0.999994)
+scale = Vector2(0.999993, 0.999993)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -166,7 +166,7 @@ vertical_alignment = 1
 
 [node name="Inventory" parent="UI" instance=ExtResource("7_g6qgq")]
 visible = false
-debug_inventory = Array[PackedScene]([ExtResource("3_rewrb"), ExtResource("4_826q0"), ExtResource("4_826q0"), ExtResource("4_826q0")])
+debug_inventory = Array[PackedScene]([ExtResource("3_rewrb"), ExtResource("4_826q0"), ExtResource("4_826q0"), ExtResource("4_826q0"), ExtResource("3_rewrb"), ExtResource("3_rewrb")])
 
 [connection signal="body_entered" from="CatchItem" to="BreathManager" method="_on_catch_item_body_entered"]
 [connection signal="body_entered" from="CatchItem" to="UI/Inventory" method="_on_catch_item_body_entered"]

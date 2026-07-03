@@ -1,8 +1,8 @@
-extends State
+extends PlayerState
 
 @export_group("States")
-@export var ground:State
-@export var under_water:State
+@export var ground: PlayerState
+@export var under_water: PlayerState
 
 var jump_buffer:float = 0.1
 var jump_timer:float = 1

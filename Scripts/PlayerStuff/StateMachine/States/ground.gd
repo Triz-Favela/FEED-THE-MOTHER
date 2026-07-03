@@ -1,16 +1,16 @@
-extends State
+extends PlayerState
 
 @export_group("States")
-@export var air:State
-@export var under_water:State
+@export var air: PlayerState
+@export var under_water: PlayerState
 
-func enter():
+func enter() -> void:
 	player.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 
-func process_physics(delta):
+func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta
 	
-	var direction = Input.get_axis("LEFT","RIGHT")
+	var direction: float = Input.get_axis("LEFT","RIGHT")
 	if direction:
 		player.velocity.x += player.ACCEL * delta * direction
 		if abs(player.velocity.x) > player.MAX_RUN_SPEED:
@@ -19,7 +19,7 @@ func process_physics(delta):
 	else:
 		Anim_state_machine.travel("Idle")
 		player.velocity.x *= 0.85
-
+	
 	if player.is_on_floor() and Input.is_action_just_pressed("UP"):
 		player.velocity.y = player.JUMP_VELOCITY
 	
