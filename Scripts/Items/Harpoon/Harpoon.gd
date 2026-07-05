@@ -1,25 +1,37 @@
 extends Item
+class_name Harpoon
 
-@onready var player_inventory = get_tree().get_first_node_in_group("Player").get_node("CurrentItem").Inventory_items_list
+@onready var player_inventory: Array[InventoryItem] = get_tree().get_first_node_in_group("Player").get_node("InventoryManager").Inventory
+var cooldown: float = 0
 
-func action():
-	var spear = null
-	for item in player_inventory.get_children():
-		if item.item_name == "Spear":
+func _process(delta: float) -> void:
+	if cooldown > 0:
+		cooldown -= delta
+
+func action() -> void:
+	if cooldown > 0:
+		print("esfriando")
+		return
+	
+	var spear: InventoryItem = null
+	for item: InventoryItem in player_inventory:
+		if item.item_name.to_upper() == "SPEAR":
 			spear = item
 			continue
 	
 	if spear == null:
 		return
 	
-	var instance = spear.item_value.instantiate()
-	get_tree().current_scene.call_deferred("add_child", instance)
-	await instance.tree_entered
+	cooldown = 0.35
+	
+	var instance: Item = spear.scene.instantiate()
 	instance.global_position = $Marker2D.global_position
 	instance.velocity = (get_global_mouse_position() - global_position).normalized() * 900
 	instance.rotation = instance.velocity.angle()
+	
+	get_tree().current_scene.call_deferred("add_child", instance)
+	await instance.tree_entered
 
-	spear.item_qntt -= 1
-	if spear.item_qntt <=0:
-		spear.queue_free()
-	print("atirei")
+	spear.quantity -= 1
+	if spear.quantity <=0:
+		player_inventory.erase(spear)

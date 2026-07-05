@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://do0msa5ey7ikh"]
+[gd_scene load_steps=7 format=3 uid="uid://do0msa5ey7ikh"]
 
 [ext_resource type="Script" path="res://Scripts/Fishes/FishClass.gd" id="1_hmxal"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="2_f2bv0"]
 [ext_resource type="Script" path="res://Scripts/Fishes/FishStates/Idle.gd" id="3_g0404"]
+[ext_resource type="Script" path="res://Scripts/Fishes/FishStates/Dead.gd" id="4_np1dl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxvrs"]
 radius = 6.0
@@ -15,7 +16,7 @@ radius = 100.0
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_hmxal")
-view_range = 300.0
+SPEED = 40.0
 display_name = "DumbFish"
 weight = 1.0
 
@@ -34,5 +35,11 @@ shape = SubResource("CircleShape2D_ydgpy")
 script = ExtResource("2_f2bv0")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Dead", "self_fish")]
 script = ExtResource("3_g0404")
+Dead = NodePath("../Dead")
+self_fish = NodePath("../..")
+
+[node name="Dead" type="Node" parent="StateMachine" node_paths=PackedStringArray("self_fish")]
+script = ExtResource("4_np1dl")
+self_fish = NodePath("../..")

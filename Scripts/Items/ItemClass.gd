@@ -17,7 +17,11 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-	
+	# Disable default layer and collision layer values
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	# Set the correct ones
+	set_collision_mask_value(4, true)
 
 func _physics_process(delta: float) -> void:
 	unpicked_item_physics(delta)
@@ -31,10 +35,8 @@ func unpicked_item_physics(delta: float) -> void:
 	# after the player drops it
 	pickable = pickable_condition(delta)
 	
-	# If the velocity is grater than the treshhold, 
-	# the rotation is set to the velocity angle
-	# (the treshold exists to prevent it from rotating like crazy, 
-	# the velocity never gets to zero apparently)
+	# if the item stopped, it return the rotation to zero, 
+	# so it can lay down flat on the ground
 	if !stopped:
 		rotation = lerp_angle(rotation, velocity.angle(), 0.9)
 	else:
@@ -54,7 +56,7 @@ func unpicked_item_physics(delta: float) -> void:
 func pickable_condition(delta: float) -> bool:
 	if timer <= 0:
 		return true
-	if pickable == false:
+	else:
 		timer -= delta
 	return false
 
@@ -76,7 +78,6 @@ func bounce_in_wall() -> void:
 			#stopped = true
 		
 	
-	print(velocity)
 	
 	
 func water_physics(delta: float) -> void:

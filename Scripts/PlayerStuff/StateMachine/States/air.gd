@@ -9,21 +9,21 @@ var jump_timer:float = 1
 var jump_qntt:int = 3
 var coyote_time:float = 0.15
 
-func enter():
+func enter() -> void:
 	player.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 	Anim_state_machine.travel("Jumping")
 	jump_qntt = 2
 	jump_timer = 1
 	coyote_time = 0.15
 
-func process_physics(delta):
+func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta
 	player.rotation = lerp_angle(player.rotation, 0.0, 0.3)
 	jump_timer -= delta
 	jump_buffer -= delta
 	coyote_time -= delta
 	
-	var direction = Input.get_axis("LEFT","RIGHT")
+	var direction: float = Input.get_axis("LEFT","RIGHT")
 	if direction:
 		player.velocity.x += player.ACCEL * delta * direction
 		if abs(player.velocity.x) > player.MAX_RUN_SPEED:

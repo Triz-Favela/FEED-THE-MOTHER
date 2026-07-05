@@ -1,14 +1,14 @@
 extends Node
 class_name State
 
-func enter():
+func enter() -> void:
 	pass
 
-func process_frame(_delta: float):
+func process_frame(_delta: float) -> State:
 	return null
 
-func process_physics(_delta: float):
+func process_physics(_delta: float) -> State:
 	return null
 
-func exit():
+func exit() -> void:
 	pass

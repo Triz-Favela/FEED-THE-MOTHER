@@ -2026,7 +2026,7 @@ states/Running/position = Vector2(279, 214)
 states/Swimming/node = SubResource("AnimationNodeBlendTree_gh4ca")
 states/Swimming/position = Vector2(677, 66)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3sa4n"), "Idle", "Running", SubResource("AnimationNodeStateMachineTransition_plvpn"), "Running", "Idle", SubResource("AnimationNodeStateMachineTransition_hf5r8"), "Idle", "Falling", SubResource("AnimationNodeStateMachineTransition_dgxmm"), "Falling", "Idle", SubResource("AnimationNodeStateMachineTransition_lg341"), "Falling", "Running", SubResource("AnimationNodeStateMachineTransition_yqk88"), "Running", "Falling", SubResource("AnimationNodeStateMachineTransition_sd32p"), "Idle", "Jumping", SubResource("AnimationNodeStateMachineTransition_cjqly"), "Jumping", "Falling", SubResource("AnimationNodeStateMachineTransition_tgya8"), "Running", "Jumping", SubResource("AnimationNodeStateMachineTransition_ooi00"), "Falling", "Jumping", SubResource("AnimationNodeStateMachineTransition_36hw2"), "Jumping", "Swimming", SubResource("AnimationNodeStateMachineTransition_xitxk"), "Swimming", "Jumping", SubResource("AnimationNodeStateMachineTransition_6e73a"), "Falling", "Swimming", SubResource("AnimationNodeStateMachineTransition_3b772"), "Swimming", "Falling", SubResource("AnimationNodeStateMachineTransition_iqtc0")]
-graph_offset = Vector2(99, -57.9841)
+graph_offset = Vector2(30, 46.0487)
 
 [node name="Player_visuals" type="Node2D"]
 position = Vector2(7, -2)

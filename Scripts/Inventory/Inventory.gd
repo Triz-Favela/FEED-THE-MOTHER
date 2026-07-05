@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@export var debug_inventory:Array[PackedScene] = []
+@export var inventory:Array[InventoryItem] = []
 
 @onready var scroll_bar = $InventoryContents/InventoryItems/HBoxContainer/VScrollBar
 @onready var scroll_container = $InventoryContents/InventoryItems/HBoxContainer/ScrollContainer
@@ -18,9 +18,6 @@ var total_weight: int = 0:
 
 func _ready():
 	adjust_scroll_bar()
-	for item in debug_inventory:
-		add_to_item_list(item.instantiate())
-
 func adjust_scroll_bar():
 	scroll_bar.max_value = items_list.get_child_count() * 48
 	scroll_bar.page = 399

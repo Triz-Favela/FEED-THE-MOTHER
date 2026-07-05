@@ -3,19 +3,19 @@ class_name Player
 
 var health:float = 100
 
-var ACCEL = 1000.0
-var MAX_RUN_SPEED = 230.0
-var JUMP_VELOCITY = -350.0
-var SWIM_MAX_SPEED = 300.0
+var ACCEL: float = 1000.0
+var MAX_RUN_SPEED: float = 230.0
+var JUMP_VELOCITY: float = -350.0
+var SWIM_MAX_SPEED: float = 300.0
 
 var flipped:int = -1
 
-var in_water = false
+var in_water: bool = false
 
 var mouse_in_window:bool = true
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_home"):
 		Engine.time_scale = 0.2
 	if Input.is_action_just_released("ui_home"):
@@ -23,8 +23,8 @@ func _process(_delta):
 	if mouse_in_window:
 		$Camera2D.position = get_local_mouse_position()/7
 
-func _physics_process(_delta):
-	var head_angle = get_angle_to(get_global_mouse_position())
+func _physics_process(_delta: float) -> void:
+	var head_angle: float = get_angle_to(get_global_mouse_position())
 	if head_angle > -1.5 and head_angle < 1.5:
 		flipped = -1
 	else:
@@ -39,9 +39,8 @@ func _physics_process(_delta):
 	  
 	health = clamp(health, 0, 100)
 	move_and_slide()
-	
 
-func update_velocity(weight):
+func update_velocity(weight: float) -> void:
 	SWIM_MAX_SPEED = 275.0 - (weight * 2)
 	MAX_RUN_SPEED = 300.0 - (weight * 2)
 	JUMP_VELOCITY = -350.0 + (weight * 3)

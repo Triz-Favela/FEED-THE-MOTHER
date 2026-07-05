@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://ttxlbgrtqq3"]
+[gd_scene load_steps=7 format=4 uid="uid://ttxlbgrtqq3"]
 
 [ext_resource type="PackedScene" uid="uid://bjfdnnewjvvki" path="res://Scenes/Enviroment/water.tscn" id="1_13rao"]
 [ext_resource type="PackedScene" uid="uid://brwnly3mkqong" path="res://Scenes/PlayerStuff/player.tscn" id="1_jhbyq"]
+[ext_resource type="PackedScene" uid="uid://do0msa5ey7ikh" path="res://Scenes/Fishes/DumbFish.tscn" id="6_hfu2c"]
 [ext_resource type="TileSet" uid="uid://bwskm66royo1" path="res://Assets/Enviroment/TerrainMaterials/Grass.tres" id="6_jsdfw"]
 [ext_resource type="PackedScene" uid="uid://jaghkr42fva2" path="res://Scenes/mother.tscn" id="6_nb3w0"]
 [ext_resource type="PackedScene" uid="uid://cuy2lwjgflp4f" path="res://Scenes/Enviroment/AirGeyser/airGeyser.tscn" id="7_gbsoy"]
@@ -26,3 +27,6 @@ position = Vector2(-178, 36)
 
 [node name="AirGeyser" parent="." instance=ExtResource("7_gbsoy")]
 position = Vector2(247, 538)
+
+[node name="Fish" parent="." instance=ExtResource("6_hfu2c")]
+position = Vector2(269, 281)
