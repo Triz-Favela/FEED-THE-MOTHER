@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://do0msa5ey7ikh"]
+[gd_scene load_steps=9 format=3 uid="uid://do0msa5ey7ikh"]
 
 [ext_resource type="Script" path="res://Scripts/Fishes/FishClass.gd" id="1_hmxal"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="2_f2bv0"]
 [ext_resource type="Script" path="res://Scripts/Fishes/FishStates/Idle.gd" id="3_g0404"]
 [ext_resource type="Script" path="res://Scripts/Fishes/FishStates/Dead.gd" id="4_np1dl"]
+[ext_resource type="Script" path="res://Scripts/Fishes/FishStates/flee.gd" id="5_6e8lt"]
+[ext_resource type="Script" path="res://Scripts/Fishes/FishStates/AboveWater.gd" id="6_8h868"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxvrs"]
 radius = 6.0
@@ -15,9 +17,11 @@ radius = 100.0
 [node name="Fish" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_hmxal")
 SPEED = 40.0
-display_name = "DumbFish"
+health = 2
+display_name = "NormalFish"
 weight = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,20 +30,37 @@ shape = SubResource("CapsuleShape2D_qxvrs")
 debug_color = Color(0.976471, 0.0117647, 0.403922, 0.419608)
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ydgpy")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "fallback_state")]
 script = ExtResource("2_f2bv0")
 initial_state = NodePath("Idle")
+fallback_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Dead", "self_fish")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Dead", "Above_water", "Flee", "self_fish")]
 script = ExtResource("3_g0404")
 Dead = NodePath("../Dead")
+Above_water = NodePath("../Above water")
+Flee = NodePath("../Flee")
 self_fish = NodePath("../..")
 
 [node name="Dead" type="Node" parent="StateMachine" node_paths=PackedStringArray("self_fish")]
 script = ExtResource("4_np1dl")
+self_fish = NodePath("../..")
+
+[node name="Flee" type="Node" parent="StateMachine" node_paths=PackedStringArray("Idle", "Above_water", "Dead", "self_fish")]
+script = ExtResource("5_6e8lt")
+Idle = NodePath("../Idle")
+Above_water = NodePath("../Above water")
+Dead = NodePath("../Dead")
+self_fish = NodePath("../..")
+
+[node name="Above water" type="Node" parent="StateMachine" node_paths=PackedStringArray("Idle", "Dead", "self_fish")]
+script = ExtResource("6_8h868")
+Idle = NodePath("../Idle")
+Dead = NodePath("../Dead")
 self_fish = NodePath("../..")

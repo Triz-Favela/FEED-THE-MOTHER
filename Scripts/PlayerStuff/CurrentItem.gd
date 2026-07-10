@@ -127,6 +127,8 @@ func throw_current_item(_just_drop_it: bool = false) -> void:
 	if !current_item:
 		return
 	
+	get_parent().make_noise.emit()
+	
 	var thrown_item: Item = current_item
 	thrown_item.picked = false
 	#thrown_item.velocity = ((get_global_mouse_position() - global_position).normalized() * 500)

@@ -55,16 +55,19 @@ position = Vector2(0, 17)
 scale = Vector2(0.15, 0.15)
 
 [node name="UpperBody" parent="Player_visuals/Skeleton2D/root" index="0"]
-scale = Vector2(0.99999, 0.99999)
+scale = Vector2(0.999987, 0.999987)
 
 [node name="Head" parent="Player_visuals/Skeleton2D/root/UpperBody" index="0"]
 scale = Vector2(0.999998, 0.999998)
 
 [node name="F_Arm" parent="Player_visuals/Skeleton2D/root/UpperBody" index="1"]
-scale = Vector2(0.999992, 0.999992)
+scale = Vector2(0.99999, 0.99999)
 
 [node name="B_Arm" parent="Player_visuals/Skeleton2D/root/UpperBody" index="2"]
-scale = Vector2(0.999993, 0.999993)
+scale = Vector2(0.999992, 0.999992)
+
+[node name="H_Arm" parent="Player_visuals/Skeleton2D/root/UpperBody" index="3"]
+scale = Vector2(1, 1)
 
 [node name="LowerBody" parent="Player_visuals/Skeleton2D/root" index="1"]
 scale = Vector2(0.999997, 0.999997)
@@ -73,13 +76,13 @@ scale = Vector2(0.999997, 0.999997)
 scale = Vector2(0.99999, 0.99999)
 
 [node name="F_Foot" parent="Player_visuals/Skeleton2D/root/LowerBody/F_Leg/F_Calf" index="0"]
-scale = Vector2(0.999994, 0.999994)
+scale = Vector2(0.999993, 0.999993)
 
 [node name="B_Leg" parent="Player_visuals/Skeleton2D/root/LowerBody" index="1"]
-scale = Vector2(0.999988, 0.999988)
+scale = Vector2(0.999986, 0.999986)
 
 [node name="B_Foot" parent="Player_visuals/Skeleton2D/root/LowerBody/B_Leg/B_Calf" index="0"]
-scale = Vector2(0.99999, 0.99999)
+scale = Vector2(0.999988, 0.999988)
 
 [node name="CurrentItemManager" type="Node2D" parent="." node_paths=PackedStringArray("inventory_manager", "arm", "arm_position_marker")]
 position = Vector2(0, -2)

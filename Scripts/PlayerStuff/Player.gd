@@ -14,6 +14,7 @@ var in_water: bool = false
 
 var mouse_in_window:bool = true
 
+signal make_noise
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_home"):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bppmb6drxhd3d"]
 
-[ext_resource type="Texture2D" uid="uid://ea7awe2ntfwb" path="res://Assets/Enviroment/Rocks.png" id="1_wk2vf"]
+[ext_resource type="Texture2D" uid="uid://ea7awe2ntfwb" path="res://Assets/Enviroment/TerrainMaterials/Rocks.png" id="1_wk2vf"]
 
 [node name="Rock5" type="Polygon2D"]
 position = Vector2(0, 145)

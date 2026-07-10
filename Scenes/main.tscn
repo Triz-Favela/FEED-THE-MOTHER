@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c5pw5ix8tgyn5" path="res://Scenes/Enviroment/Rocks/Rock6.tscn" id="8_hr0m6"]
 [ext_resource type="PackedScene" uid="uid://b0wk5yu8318dm" path="res://Scenes/Enviroment/Rocks/Rock7.tscn" id="9_pp7ch"]
 [ext_resource type="TileSet" uid="uid://bwskm66royo1" path="res://Assets/Enviroment/TerrainMaterials/Grass.tres" id="10_4rcbn"]
-[ext_resource type="PackedScene" uid="uid://olbeghikqf2s" path="res://Scenes/Enviroment/fishSpawner.tscn" id="11_kedme"]
+[ext_resource type="PackedScene" uid="uid://olbeghikqf2s" path="res://Scenes/Fishes/fishSpawner.tscn" id="11_kedme"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rvee5"]
 resource_name = "ROCKS"

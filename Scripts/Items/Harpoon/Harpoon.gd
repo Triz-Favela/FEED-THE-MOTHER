@@ -1,7 +1,8 @@
 extends Item
 class_name Harpoon
 
-@onready var player_inventory: Array[InventoryItem] = get_tree().get_first_node_in_group("Player").get_node("InventoryManager").Inventory
+@onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var player_inventory: Array[InventoryItem] = player.get_node("InventoryManager").Inventory
 var cooldown: float = 0
 
 func _process(delta: float) -> void:
@@ -23,6 +24,7 @@ func action() -> void:
 		return
 	
 	cooldown = 0.35
+	player.make_noise.emit()
 	
 	var instance: Item = spear.scene.instantiate()
 	instance.global_position = $Marker2D.global_position

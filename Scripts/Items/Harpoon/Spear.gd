@@ -7,6 +7,7 @@ func unpicked_item_physics(delta: float) -> void:
 	if picked:
 		return
 	
+	
 	# The item sets a condition to be pickable
 	pickable = pickable_condition(delta)
 	
@@ -34,14 +35,10 @@ func pickable_condition(delta: float) -> bool:
 
 
 func _on_damage_body_entered(body: Node2D) -> void:
-	if stuck or picked:
+	if stuck or picked or ("health" in body and body.health <= 0):
 		return
-	velocity = Vector2.ZERO
-	stuck = true
 	
-	call_deferred("reparent", body)
-	
-	if body is Fish:
+	if body is Fish and velocity.length() > 100:
 		body.health -= 1
 		position += body.velocity * body.get_physics_process_delta_time()
 		body.SPEED -= body.SPEED/3
@@ -52,5 +49,8 @@ func _on_damage_body_entered(body: Node2D) -> void:
 				if node is Item:
 					node.picked = true
 					node.pickable = false
-		else:
-			picked = false
+		
+	velocity = Vector2.ZERO
+	stuck = true
+	
+	call_deferred("reparent", body)

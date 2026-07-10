@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=12 format=3 uid="uid://bwskm66royo1"]
 
 [ext_resource type="PackedScene" uid="uid://ubko8hb1xptm" path="res://Scenes/Enviroment/Rocks/Rock1.tscn" id="1_n5as4"]
-[ext_resource type="Texture2D" uid="uid://belumx4igqkyp" path="res://Assets/Enviroment/tileset.png" id="1_ofnvc"]
+[ext_resource type="Texture2D" uid="uid://belumx4igqkyp" path="res://Assets/Enviroment/TerrainMaterials/tileset.png" id="1_ofnvc"]
 [ext_resource type="PackedScene" uid="uid://bqnmuaedeoivk" path="res://Scenes/Enviroment/Rocks/Rock2.tscn" id="2_wq584"]
 [ext_resource type="PackedScene" uid="uid://dhxmqdv20y5vk" path="res://Scenes/Enviroment/Rocks/Rock3.tscn" id="3_imqhe"]
 [ext_resource type="PackedScene" uid="uid://cptaoqmwrn02k" path="res://Scenes/Enviroment/Rocks/Rock4.tscn" id="4_ucejq"]
